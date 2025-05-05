@@ -16,6 +16,7 @@ import com.hjq.demo.manager.ActivityManager
 import com.hjq.demo.manager.Router
 import com.hjq.demo.other.DoubleClickHelper
 import com.hjq.demo.ui.adapter.NavigationAdapter
+import com.hjq.demo.ui.fragment.HomeFragment
 import com.hjq.demo.ui.fragment.MessageFragment
 
 /**
@@ -75,12 +76,18 @@ class HomeActivity : AppActivity(), NavigationAdapter.OnNavigationListener {
                     ContextCompat.getDrawable(this@HomeActivity, R.drawable.home_home_selector)
                 )
             )
-            /*addItem(
+            addItem(
+                NavigationAdapter.MenuItem(
+                    getString(R.string.home_nav_message),
+                    ContextCompat.getDrawable(this@HomeActivity, R.drawable.home_home_selector)
+                )
+            )
+            addItem(
                 NavigationAdapter.MenuItem(
                     getString(R.string.home_nav_me),
                     ContextCompat.getDrawable(this@HomeActivity, R.drawable.home_home_selector)
                 )
-            )*/
+            )
             setOnNavigationListener(this@HomeActivity)
             navigationView?.adapter = this
         }
@@ -88,7 +95,7 @@ class HomeActivity : AppActivity(), NavigationAdapter.OnNavigationListener {
 
     override fun initData() {
         pagerAdapter = FragmentPagerAdapter<AppFragment<*>>(this).apply {
-            addFragment(MessageFragment.newInstance())
+            addFragment(HomeFragment.newInstance())
             addFragment(MessageFragment.newInstance())
             addFragment(MessageFragment.newInstance())
             viewPager?.adapter = this
