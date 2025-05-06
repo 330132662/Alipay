@@ -98,6 +98,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="0dp"
                 android:background="@color/transparent"
+                android:contentDescription="四个固定的常用入口"
                 android:orientation="horizontal">
 
                 <androidx.appcompat.widget.LinearLayoutCompat
@@ -187,11 +188,13 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="0dp"
                 android:layout_marginTop="5dp"
+                android:layout_weight="1"
                 android:background="@drawable/bg_home"
                 android:contentDescription="网格导航开始"
-                android:paddingHorizontal="10dp">
+                android:paddingHorizontal="10dp"
+                android:paddingVertical="10dp">
 
                 <com.hjq.widget.layout.WrapRecyclerView
                     android:id="@+id/list_nav"
@@ -201,6 +204,192 @@
                     app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
                     app:layout_constraintTop_toTopOf="parent"
                     app:spanCount="5" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/ll_search"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/bg_search"
+                    android:padding="10dp"
+                    app:layout_constraintTop_toBottomOf="@+id/list_nav">
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/t_recently"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="最近消息"
+                        android:textColor="@color/common_text_color"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="10dp"
+                        android:text="1条新消息"
+                        app:layout_constraintBottom_toBottomOf="@+id/iv_arrow"
+                        app:layout_constraintEnd_toStartOf="@+id/iv_new"
+                        app:layout_constraintTop_toTopOf="@+id/iv_arrow" />
+
+                    <View
+                        android:id="@+id/iv_new"
+                        android:layout_width="15dp"
+                        android:layout_height="15dp"
+                        android:background="@drawable/bg_circle"
+                        app:layout_constraintBottom_toBottomOf="@+id/iv_arrow"
+                        app:layout_constraintEnd_toStartOf="@+id/iv_arrow"
+                        app:layout_constraintTop_toTopOf="@+id/iv_arrow" />
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/iv_arrow"
+                        android:layout_width="15dp"
+                        android:layout_height="wrap_content"
+                        android:src="@mipmap/right"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/iv_logo"
+                        android:layout_width="18dp"
+                        android:layout_height="18dp"
+                        android:layout_marginTop="10dp"
+                        android:src="@mipmap/launcher_ic"
+                        app:layout_constraintStart_toStartOf="@+id/t_recently"
+                        app:layout_constraintTop_toBottomOf="@+id/t_recently" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:text="支付宝"
+                        app:layout_constraintBottom_toBottomOf="@+id/iv_logo"
+                        app:layout_constraintStart_toEndOf="@+id/iv_logo" />
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/bg_notify"
+                        android:padding="10dp"
+                        app:layout_constraintTop_toBottomOf="@+id/iv_logo">
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:id="@+id/t_notify"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="添加付款方式"
+                            android:textColor="@color/black"
+                            android:textSize="18sp"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:id="@+id/t_notify1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:text="方便购物、转账、到店付款"
+                            android:textColor="@color/common_text_color"
+                            app:layout_constraintStart_toStartOf="@+id/t_notify"
+                            app:layout_constraintTop_toBottomOf="@+id/t_notify" />
+
+                        <com.google.android.material.button.MaterialButton
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="10dp"
+                            android:text="立即添加"
+                            app:cornerRadius="18dp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/ll_seckill"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="2dp"
+                    android:background="@drawable/bg_miaosha"
+                    android:padding="10dp"
+                    app:layout_constraintEnd_toStartOf="@+id/ll_consume"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/ll_search">
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/t_seckill"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="天天秒杀"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <View
+                        android:id="@+id/v_line"
+                        android:layout_width="1dp"
+                        android:layout_height="10dp"
+                        android:layout_marginHorizontal="15dp"
+                        android:background="@color/black"
+                        app:layout_constraintBottom_toBottomOf="@+id/t_seckill"
+                        app:layout_constraintEnd_toStartOf="@+id/t_seckill1"
+                        app:layout_constraintStart_toEndOf="@+id/t_seckill"
+                        app:layout_constraintTop_toTopOf="@+id/t_seckill" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/t_seckill1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:text="天天领红包"
+                        android:textColor="@color/red"
+                        app:layout_constraintBottom_toBottomOf="@+id/t_seckill"
+                        app:layout_constraintStart_toEndOf="@+id/v_line" />
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/iv_good"
+                        android:layout_width="wrap_content"
+                        android:layout_height="60dp"
+                        android:layout_marginTop="5dp"
+                        android:src="@mipmap/launcher_ic"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/t_seckill"
+                        app:srcCompat="@mipmap/launcher_ic" />
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/iv_redpocket"
+                        android:layout_width="wrap_content"
+                        android:layout_height="60dp"
+                        android:layout_marginTop="5dp"
+                        android:src="@mipmap/launcher_ic"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/iv_good"
+                        app:layout_constraintTop_toBottomOf="@+id/t_seckill"
+                        app:srcCompat="@mipmap/launcher_ic" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/ll_consume"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="2dp"
+                    android:background="@drawable/bg_miaosha"
+                    android:minHeight="100dp"
+                    android:padding="10dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/ll_seckill"
+                    app:layout_constraintTop_toTopOf="@+id/ll_seckill">
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:layout_width="wrap_content"
+
+                        android:layout_height="wrap_content"
+                        android:text="消费圈"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.appcompat.widget.LinearLayoutCompat>
