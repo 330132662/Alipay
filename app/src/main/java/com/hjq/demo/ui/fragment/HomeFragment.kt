@@ -2,16 +2,16 @@ package com.hjq.demo.ui.fragment
 
 import android.widget.ImageView
 import android.widget.LinearLayout
-import androidx.appcompat.widget.AppCompatButton
 import com.alibaba.android.arouter.launcher.ARouter
 import com.google.android.material.button.MaterialButton
 import com.hjq.demo.R
 import com.hjq.demo.aop.Permissions
 import com.hjq.demo.app.TitleBarFragment
 import com.hjq.demo.manager.Router
-import com.hjq.demo.ui.activity.AdminActivity
 import com.hjq.demo.ui.activity.HomeActivity
+import com.hjq.demo.ui.adapter.HomeNavAdapter
 import com.hjq.permissions.Permission
+import com.hjq.widget.layout.WrapRecyclerView
 import com.kongzue.dialogx.dialogs.MessageDialog
 import timber.log.Timber
 
@@ -26,10 +26,12 @@ class HomeFragment : TitleBarFragment<HomeActivity>() {
     private var btn_13: MaterialButton? = null;//by lazy { findViewById(R.id.btn_renew) }
     private var btn_dialog: MaterialButton? = null;//by lazy { findViewById(R.id.btn_renew) }
     private var btn_english: MaterialButton? = null;//by lazy { findViewById(R.id.btn_renew) }
+    private var list_nav: WrapRecyclerView? = null;
+
+    private var navAdapter: HomeNavAdapter? = null;
 
     //btn_13
     companion object {
-
         fun newInstance(): HomeFragment {
             return HomeFragment()
         }
@@ -42,8 +44,27 @@ class HomeFragment : TitleBarFragment<HomeActivity>() {
     }
 
     override fun initView() {
-//        btn_13 = activity?.findViewById(R.id.btn_13);
+        btn_13 = activity?.findViewById(R.id.btn_13);
+        list_nav = activity?.findViewById(R.id.list_nav);
 
+        navAdapter = HomeNavAdapter(requireActivity())
+        list_nav?.adapter = navAdapter ;
+        val navTitle = mutableListOf(
+            "转账",
+            "余额宝",
+            "花呗",
+            "信用卡还款",
+            "蚂蚁森林",
+            "芝麻信用",
+            "市民中心",
+            "手机充值",
+            "生活缴费",
+            "医疗健康",
+            "支付宝荷包",
+            "天天秒杀",
+            "我的小程序"
+        );
+        navAdapter?.setData(navTitle)
 
         /*setOnClickListener(
             R.id.btn_message_image1,
@@ -66,15 +87,13 @@ class HomeFragment : TitleBarFragment<HomeActivity>() {
         btn_dialog?.setOnClickListener {
             val dialog = MessageDialog.build().setTitle("是否同意性行为").setMessage("")
                 .setOkButton("仅在使用中允许").setOtherButton("本次运行允许")
-                .setButtonOrientation(LinearLayout.VERTICAL)
-                .setCancelButton("拒绝");
+                .setButtonOrientation(LinearLayout.VERTICAL).setCancelButton("拒绝");
             dialog.show();
         }
         if (getAttachActivity() == null) {
             Timber.e("aaaa");
             return;
         }
-
 
 
     }

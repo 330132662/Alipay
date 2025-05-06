@@ -67,25 +67,25 @@ class HomeActivity : AppActivity(), NavigationAdapter.OnNavigationListener {
             addItem(
                 NavigationAdapter.MenuItem(
                     getString(R.string.home_nav_found),
-                    ContextCompat.getDrawable(this@HomeActivity, R.drawable.home_home_selector)
+                    ContextCompat.getDrawable(this@HomeActivity, R.drawable.home_licai_selector)
+                )
+            )
+            addItem(
+                NavigationAdapter.MenuItem(
+                    getString(R.string.home_nav_video),
+                    ContextCompat.getDrawable(this@HomeActivity, R.drawable.home_video_selector)
                 )
             )
             addItem(
                 NavigationAdapter.MenuItem(
                     getString(R.string.home_nav_message),
-                    ContextCompat.getDrawable(this@HomeActivity, R.drawable.home_home_selector)
-                )
-            )
-            addItem(
-                NavigationAdapter.MenuItem(
-                    getString(R.string.home_nav_message),
-                    ContextCompat.getDrawable(this@HomeActivity, R.drawable.home_home_selector)
+                    ContextCompat.getDrawable(this@HomeActivity, R.drawable.home_msg_selector)
                 )
             )
             addItem(
                 NavigationAdapter.MenuItem(
                     getString(R.string.home_nav_me),
-                    ContextCompat.getDrawable(this@HomeActivity, R.drawable.home_home_selector)
+                    ContextCompat.getDrawable(this@HomeActivity, R.drawable.home_me_selector)
                 )
             )
             setOnNavigationListener(this@HomeActivity)
@@ -98,6 +98,8 @@ class HomeActivity : AppActivity(), NavigationAdapter.OnNavigationListener {
             addFragment(HomeFragment.newInstance())
             addFragment(MessageFragment.newInstance())
             addFragment(MessageFragment.newInstance())
+            addFragment(MessageFragment.newInstance())
+            addFragment(HomeFragment.newInstance())
             viewPager?.adapter = this
         }
         onNewIntent(intent)
@@ -129,7 +131,7 @@ class HomeActivity : AppActivity(), NavigationAdapter.OnNavigationListener {
             return
         }
         when (fragmentIndex) {
-            0, 1, 2, 3 -> {
+            0, 1, 2, 3, 4 -> {
                 viewPager?.currentItem = fragmentIndex
                 navigationAdapter?.setSelectedPosition(fragmentIndex)
             }
@@ -141,7 +143,7 @@ class HomeActivity : AppActivity(), NavigationAdapter.OnNavigationListener {
      */
     override fun onNavigationItemSelected(position: Int): Boolean {
         return when (position) {
-            0, 1, 2, 3 -> {
+            0, 1, 2, 3 ,4-> {
                 viewPager?.currentItem = position
                 true
             }
